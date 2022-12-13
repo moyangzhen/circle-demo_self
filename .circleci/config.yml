@@ -3,16 +3,18 @@ jobs:
   build:
     docker:
       - image: circleci/node:10
-        auth:
-          username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD # context / project UI env-var reference
+    branches:
+      only: master
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "35:e4:27:dc:db:71:53:84:8c:20:46:e4:9a:92:65:88"
+      - checkout
       - run:
-          name: The First Step
+          name: Install
           command: |
-            echo 'Hello World!'
-            echo 'This is the delivery pipeline'
+            yarn install
       - run:
-          name: Check node version
+          name: Build
           command: |
-            npm -v
+            yarn build
