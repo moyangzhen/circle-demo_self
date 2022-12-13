@@ -8,11 +8,26 @@ jobs:
           fingerprints:
             - "35:e4:27:dc:db:71:53:84:8c:20:46:e4:9a:92:65:88"
       - checkout
+      - restore_cache:
+          keys:
+            - dependencies_imooc
       - run:
           name: Install
           command: |
             yarn install
+      - save_cache:
+          paths:
+            - "node_modules"
+          key: dependencies_imooc
       - run:
           name: Build
           command: |
             yarn build
+      - run:
+          name: Prepare shell commands
+          # shell chmod +x 赋予执行权限
+          ## 执行shell 脚本
+          command: chmod +x scripts/deploy.sh
+      - run:
+          name: Run Deploy to Github Pages
+          command: ./scripts/deploy.sh
