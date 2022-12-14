@@ -1,10 +1,13 @@
 <template>
   <div id="app">
     <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link class="link-item" to="/">HTML</router-link>
+      <router-link class="link-item" to="/about">CSS</router-link>
+      <router-link class="link-item" to="/about">JavaScript</router-link>
+      <router-link class="link-item" to="/about">Vue</router-link>
+      <router-link class="link-item" to="/about">设计模式</router-link>
     </nav>
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
@@ -18,15 +21,10 @@
 }
 
 nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+  display: flex;
+  justify-content: space-between;
+  .link-item {
+    flex: 1;
   }
 }
 </style>
