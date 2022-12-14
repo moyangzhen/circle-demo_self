@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="楚盼盼是个小美女" />
+    <HelloWorld msg="test" />
   </div>
 </template>
 
